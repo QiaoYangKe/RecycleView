@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">机列任务</string>
+    <string name="editHint">请输入批号</string>
+    <string name="button">搜索</string>
+</resources>
