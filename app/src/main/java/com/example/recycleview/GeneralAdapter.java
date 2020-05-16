@@ -49,12 +49,6 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
             holder.textView3.setText("成品合金:" + task.getTaskName() + "成品状态:" + task.getTaskName());
             holder.textView4.setText("工序参数:" + task.getTaskName());
         }
-        if(position == getItemCount() - 1){//已经到达列表的底部
-            Task task1 = new Task();
-            task1.setId("100");
-            task1.setTaskName("100********");
-            datas.add(task1);
-        }
     }
 
 

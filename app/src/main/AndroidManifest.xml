@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SelectPicPopupWindow" android:theme="@style/MyDialogStyleBottom" />
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -45,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new MyItemTouchListener(recyclerView) {
             @Override
             public void onItemClick(RecyclerView.ViewHolder vh) {
-                TextView textView = findViewById(R.id.textView1);
-                Toast.makeText(MainActivity.this,textView.getText(),Toast.LENGTH_SHORT).show();
+//                TextView textView = findViewById(R.id.textView1);
+//                Toast.makeText(MainActivity.this,textView.getText(),Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,SelectPicPopupWindow.class));
             }
         });
 
