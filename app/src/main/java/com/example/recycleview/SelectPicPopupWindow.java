@@ -1,25 +1,33 @@
 package com.example.recycleview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SelectPicPopupWindow extends Activity implements OnClickListener{
 
     private Button btn_take_photo, btn_pick_photo, btn_cancel;
     private LinearLayout layout;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.racycler_bottom_tool);
-        btn_take_photo = this.findViewById(R.id.btn_take_photo);
-        btn_pick_photo = this.findViewById(R.id.btn_pick_photo);
+        textView = findViewById(R.id.textView);
+        Bundle extras = this.getIntent().getExtras();
+        if(extras.getString("ph") != null) {
+            textView.setText(extras.getString("ph").toString());
+        }
+        btn_take_photo = this.findViewById(R.id.btn_product);
+        btn_pick_photo = this.findViewById(R.id.btn_complete);
         btn_cancel = this.findViewById(R.id.btn_cancel);
 
         layout=(LinearLayout)findViewById(R.id.pop_layout);
@@ -48,9 +56,10 @@ public class SelectPicPopupWindow extends Activity implements OnClickListener{
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_take_photo:
+            case R.id.btn_product:
+                startActivity(new Intent(SelectPicPopupWindow.this,ProducingActivity.class));
                 break;
-            case R.id.btn_pick_photo:
+            case R.id.btn_complete:
                 break;
             case R.id.btn_cancel:
                 break;

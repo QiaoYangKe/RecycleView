@@ -10,17 +10,23 @@
     <LinearLayout
         android:id="@+id/pop_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="193dp"
         android:layout_alignParentBottom="true"
         android:background="#809A8F8F"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/btn_take_photo"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btn_product"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dip"
             android:layout_marginTop="20dip"
             android:layout_marginRight="20dip"
@@ -29,9 +35,9 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_pick_photo"
+            android:id="@+id/btn_complete"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dip"
             android:layout_marginLeft="20dip"
             android:layout_marginTop="5dip"
             android:layout_marginRight="20dip"
@@ -42,7 +48,7 @@
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dip"
             android:layout_marginLeft="20dip"
             android:layout_marginTop="15dip"
             android:layout_marginRight="20dip"

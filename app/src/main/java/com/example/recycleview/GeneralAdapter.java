@@ -11,10 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.module.Task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHolder> {
@@ -22,6 +24,29 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
     private Context context;
     //RecyclerView填充Item数据的List对象
     private List<Task> datas;
+
+    private static int currentPage = 1;
+    private int pageSize = 10;
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public List<Task> searchData() {
+        List<Task> taskList = new ArrayList<>();
+        int page = ++GeneralAdapter.currentPage;
+        for (int i = (page-1)*pageSize ; i<(page*pageSize);i++){
+            Task task = new Task();
+            task.setTaskName("测试数据" + i + "*******");
+            taskList.add(task);
+        }
+        return taskList;
+    }
+
     public GeneralAdapter(Context context,List<Task> datas){
         this.context = context;
         this.datas = datas;
