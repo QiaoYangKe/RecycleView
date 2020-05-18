@@ -24,8 +24,9 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
     private Context context;
     //RecyclerView填充Item数据的List对象
     private List<Task> datas;
+    private String query;
 
-    private static int currentPage = 1;
+    private int currentPage = 1;
     private int pageSize = 10;
 
     public int getPageSize() {
@@ -36,15 +37,18 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
         this.pageSize = pageSize;
     }
 
-    public List<Task> searchData() {
+    public void searchData(String query) {
         List<Task> taskList = new ArrayList<>();
-        int page = ++GeneralAdapter.currentPage;
+        int page = currentPage;
         for (int i = (page-1)*pageSize ; i<(page*pageSize);i++){
             Task task = new Task();
+            task.setId(String.valueOf(i));
             task.setTaskName("测试数据" + i + "*******");
             taskList.add(task);
         }
-        return taskList;
+        this.datas.addAll(taskList);
+        notifyDataSetChanged();
+        currentPage++;
     }
 
     public GeneralAdapter(Context context,List<Task> datas){
@@ -73,6 +77,8 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
             holder.textView2.setText("工序名称:" + task.getTaskName() + "卷号:" + task.getTaskName());
             holder.textView3.setText("成品合金:" + task.getTaskName() + "成品状态:" + task.getTaskName());
             holder.textView4.setText("工序参数:" + task.getTaskName());
+            holder.textView4.setText("工序参数:" + task.getTaskName());
+            holder.textView9.setText(task.getId());
         }
     }
 
@@ -85,7 +91,7 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
 
     //继承RecyclerView.ViewHolder抽象类的自定义ViewHolder
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView textView1,textView2,textView3,textView4;
+        TextView textView1,textView2,textView3,textView4,textView9;
 
         MyViewHolder(View itemView) {
             super(itemView);
@@ -93,6 +99,7 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.MyViewHo
             textView2 = itemView.findViewById(R.id.textView2);
             textView3 = itemView.findViewById(R.id.textView3);
             textView4 = itemView.findViewById(R.id.textView4);
+            textView9 = itemView.findViewById(R.id.textView9);
         }
     }
 }

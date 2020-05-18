@@ -16,6 +16,7 @@ public class SelectPicPopupWindow extends Activity implements OnClickListener{
     private Button btn_take_photo, btn_pick_photo, btn_cancel;
     private LinearLayout layout;
     private TextView textView;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,9 @@ public class SelectPicPopupWindow extends Activity implements OnClickListener{
         Bundle extras = this.getIntent().getExtras();
         if(extras.getString("ph") != null) {
             textView.setText(extras.getString("ph").toString());
+        }
+        if(extras.getString("id") != null) {
+            id = extras.getString("id").toString();
         }
         btn_take_photo = this.findViewById(R.id.btn_product);
         btn_pick_photo = this.findViewById(R.id.btn_complete);
@@ -57,9 +61,10 @@ public class SelectPicPopupWindow extends Activity implements OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_product:
-                startActivity(new Intent(SelectPicPopupWindow.this,ProducingActivity.class));
+                startActivity(new Intent(SelectPicPopupWindow.this,ProducingActivity.class).putExtra("id",id));
                 break;
             case R.id.btn_complete:
+                startActivity(new Intent(SelectPicPopupWindow.this,CompleteActivity.class).putExtra("id",id));
                 break;
             case R.id.btn_cancel:
                 break;
